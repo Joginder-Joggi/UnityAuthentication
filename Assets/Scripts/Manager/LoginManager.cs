@@ -34,36 +34,13 @@ public class LoginManager : MonoBehaviour
         if(username != "" &&  password != "")
         {
             await SignInWithUsernamePasswordAsync(username, password);
+            SceneManager.LoadScene(1);
         }
         else
         {
             errorText.text = "Please Enter Credantials";
         }
-    }
-
-    async Task SignUpWithUsernamePasswordAsync(string username, string password)
-    {
-        try
-        {
-            await AuthenticationService.Instance.SignUpWithUsernamePasswordAsync(username, password);
-            errorText.text = "Sign Up Sccessful";
-            Debug.Log("SignUp is successful.");
-        }
-        catch (AuthenticationException ex)
-        {
-            // Compare error code to AuthenticationErrorCodes
-            // Notify the player with the proper error message
-            errorText.text = ex.Message;
-            Debug.LogException(ex);
-        }
-        catch (RequestFailedException ex)
-        {
-            // Compare error code to CommonErrorCodes
-            // Notify the player with the proper error message
-            errorText.text = ex.Message;
-            Debug.LogException(ex);
-        }
-    }
+    }    
 
     async Task SignInWithUsernamePasswordAsync(string username, string password)
     {
@@ -103,10 +80,35 @@ public class LoginManager : MonoBehaviour
         if(password != "" && password == confirmPassword)
         {
             await SignUpWithUsernamePasswordAsync(username, password);
+            SceneManager.LoadScene(1);
         }
         else
         {
             errorText.text = "Please check entered password";
+        }
+    }
+
+    async Task SignUpWithUsernamePasswordAsync(string username, string password)
+    {
+        try
+        {
+            await AuthenticationService.Instance.SignUpWithUsernamePasswordAsync(username, password);
+            errorText.text = "Sign Up Sccessful";
+            Debug.Log("SignUp is successful.");
+        }
+        catch (AuthenticationException ex)
+        {
+            // Compare error code to AuthenticationErrorCodes
+            // Notify the player with the proper error message
+            errorText.text = ex.Message;
+            Debug.LogException(ex);
+        }
+        catch (RequestFailedException ex)
+        {
+            // Compare error code to CommonErrorCodes
+            // Notify the player with the proper error message
+            errorText.text = ex.Message;
+            Debug.LogException(ex);
         }
     }
 

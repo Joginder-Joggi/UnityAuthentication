@@ -935,11 +935,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 9fbbb730-7d74-428c-9c5c-d91626dfc1ad
+  cloudProjectId: 1f91db63-d767-4701-96b8-949624e22992
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: TestSign
-  organizationId: bhalanetra-creators-as-publisher
+  projectName: unityNormalAuthentication
+  organizationId: iam_mridul
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
