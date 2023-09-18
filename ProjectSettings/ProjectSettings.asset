@@ -935,11 +935,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 1f91db63-d767-4701-96b8-949624e22992
+  cloudProjectId: c31e8708-774b-4f8b-9350-905b0ded609b
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: unityNormalAuthentication
-  organizationId: iam_mridul
+  projectName: Unity Gaming Services Use Cases (1)
+  organizationId: bhalanetra-creators-as-publisher
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 8f4e626360987204cbee535e4323d580
+  m_SerializeEntries:
+  - m_GUID: d82e6ef2427d4d946b6aab365382b081
+    m_Address: Sprites/Currency/Coin
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f381f0124c878fe45b9f52a86894c0e4
+    m_Address: Sprites/Currency/Gem
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 64f9e97ab2e1ee84d9543be9061c27bc
+    m_Address: Sprites/Badges/Banner
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 968c123a8544db84c828639aae6cf3d1
+    m_Address: Sprites/Currency/Pearl
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 239df04d8f61c1b428ba54397b6b0a93
+    m_Address: Sprites/Inventory/Shield
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d5ec5b553ff712e46ad091c97fc4db93
+    m_Address: Sprites/Currency/Star
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 799d863c64ef6cb4493a4ae262565af4
+    m_Address: Sprites/Inventory/Sword
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: fe8d087eb702f1641b638c97663cdc0c, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 79415988b6eae7c49957e8029f7ab2e5, type: 2}
+    - {fileID: 11400000, guid: 7252b513b691c9d48b98cc513d30c254, type: 2}

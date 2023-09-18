@@ -8,117 +8,51 @@ using Unity.Services.Core;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CloudSaveSystem : MonoBehaviour
+namespace GAMEDEV.Save
 {
-    public static CloudSaveSystem instance;
-
-    public TMP_InputField CoinInput;
-    public TMP_Text ShowCoinText;
-
-    private void Awake()
+    public static class CloudSaveSystem
     {
-        if (instance == null)
+        public static async Task SaveDataAsync(string id, int value)
         {
-            instance = this;
-
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-    }
-
-    public async void Start()
-    {
-        await UnityServices.InitializeAsync();
-
-        LoadDataOnStart();
-    }
-   
-
-    public async void SaveCoinsBtnPress()
-    {
-        int _coinInput = int.Parse(CoinInput.text);         
-        await SaveDataAsync(_coinInput);
-    }
-    public async Task SaveDataAsync(int Coins)
-    {
-        try
-        {
-            var data = new Dictionary<string, object> { { "CoinsData", Coins} };
-            await CloudSaveService.Instance.Data.ForceSaveAsync(data);
-
-        }
-        catch (Exception ex)
-        {
-            // Handle the exception appropriately (log, show a message, etc.).
-            Console.WriteLine($"An error occurred while saving data: {ex.Message}");
-        }
-    }
-
-
-    private async void LoadDataOnStart()
-    {
-        Dictionary<string, string> CoinData = await CloudSaveService.Instance.Data.LoadAsync(new HashSet<string> { "CoinsData" });
-
-        if (CoinData.ContainsKey("CoinsData"))
-        {
-            string coinsDataString = CoinData["CoinsData"];
-
-            if (int.TryParse(coinsDataString, out int coinsDataInt))
+            try
             {
-                ShowCoinText.text = coinsDataInt.ToString(); // Display the integer value in the text box
+                var data = new Dictionary<string, object> { { id, value } };
+                await CloudSaveService.Instance.Data.ForceSaveAsync(data);
+
             }
-            else
+            catch (Exception ex)
             {
-                print("Invalid integer format in CoinsData key");
+                // Handle the exception appropriately (log, show a message, etc.).
+                Console.WriteLine($"An error occurred while saving data: {ex.Message}");
             }
         }
-        else
-        {
-           // coin key will be made
-            var data = new Dictionary<string, object> { { "CoinsData", 0 } };
-            await CloudSaveService.Instance.Data.ForceSaveAsync(data);
-            Dictionary<string, string> coinData = await CloudSaveService.Instance.Data.LoadAsync(new HashSet<string> { "CoinsData" });
-            if (coinData.ContainsKey("CoinsData"))
-            {
-                string CcoinsDataString = coinData["CoinsData"];
 
-                if (int.TryParse(CcoinsDataString, out int coinsDataInt))
+        public static async Task<int> LoadDataAsync(string id)
+        {
+            Dictionary<string, string> Data = await CloudSaveService.Instance.Data.LoadAsync(new HashSet<string> { id });
+
+            int _dataInt;
+
+            if (Data.ContainsKey(id))
+            {
+                string dataString = Data[id];
+
+                if (int.TryParse(dataString, out int dataInt))
                 {
-                    ShowCoinText.text = coinsDataInt.ToString(); // Display the integer value in the text box
-                }
-                else
-                {
-                    print("Invalid integer format in CoinsData key");
+                    return _dataInt = dataInt;
                 }
             }
+
+            return _dataInt = 0;
         }
-    }
 
-
-    public async void LoadData()
-    {
-        Dictionary<string, string> CCoinData = await CloudSaveService.Instance.Data.LoadAsync(new HashSet<string> { "CoinsData" });
-
-        if (CCoinData.ContainsKey("CoinsData"))
+        public static void Interaction(Button button, bool value)
         {
-            string cooinsDataString = CCoinData["CoinsData"];
-
-            if (int.TryParse(cooinsDataString, out int coinsDataInt))
+            if (button != null)
             {
-                ShowCoinText.text = coinsDataInt.ToString(); // Display the integer value in the text box
-            }
-            else
-            {
-                print("Invalid integer format in CoinsData key");
+                button.interactable = value;
             }
         }
-        else
-        {
-            print("Key not present");
-        }
-    }
 
+    }
 }
