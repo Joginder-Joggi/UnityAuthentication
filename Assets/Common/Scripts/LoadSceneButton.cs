@@ -32,8 +32,7 @@ namespace Unity.Services.Samples
 
         void OnButtonClick()
         {
-            LoadScene();
-            SelectReadmeFileOnProjectWindow();
+            MenuManager.instance.GotoHomeScreen();
         }
 
         protected void LoadScene()

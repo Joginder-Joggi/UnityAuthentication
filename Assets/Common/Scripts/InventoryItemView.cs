@@ -9,6 +9,12 @@ namespace Unity.Services.Samples
         public Sprite swordSprite;
         public Sprite shieldSprite;
 
+        [Header("Tarality")]
+        public Sprite gandivaGuard;
+        public Sprite archersAegis;
+        public Sprite dhananjyaDefender;
+        public Sprite indrasEnmbrace;
+
         Image m_IconImage;
 
         void Awake()
@@ -26,6 +32,22 @@ namespace Unity.Services.Samples
 
                 case "SHIELD":
                     m_IconImage.sprite = shieldSprite;
+                    break;
+
+                case "GANDIVA_GUARD":
+                    m_IconImage.sprite = gandivaGuard;
+                    break;
+
+                case "ARCHERS_AEGIS":
+                    m_IconImage.sprite = archersAegis;
+                    break;
+
+                case "DHANANJAYA_DEFENDER":
+                    m_IconImage.sprite = dhananjyaDefender;
+                    break;
+
+                case "INDRAS_EMBRACE":
+                    m_IconImage.sprite = indrasEnmbrace;
                     break;
 
                 default:

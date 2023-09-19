@@ -13,11 +13,35 @@ namespace Unity.Services.Samples.VirtualShop
 {
     public class VirtualShopSceneManager : MonoBehaviour
     {
+        public static VirtualShopSceneManager Instance;
+
+        private void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(this);
+            }
+        }
+
         const int k_EconomyPurchaseCostsNotMetStatusCode = 10504;
 
         public VirtualShopSampleView virtualShopSampleView;
 
-        async void Start()
+        //async void Start()
+        //{
+        //    //await InitializeShopAsync();
+        //}
+
+        public async void InitializeStoreAsync()
+        {
+            await InitializeShopAsync();
+        }
+
+        public async Task InitializeShopAsync()
         {
             try
             {
@@ -28,8 +52,10 @@ namespace Unity.Services.Samples.VirtualShop
 
                 if (!AuthenticationService.Instance.IsSignedIn)
                 {
-                    await AuthenticationService.Instance.SignInAnonymouslyAsync();
-                    if (this == null) return;
+                    //await AuthenticationService.Instance.SignInAnonymouslyAsync();
+                    //if (this == null) return;
+                    MenuManager.instance.GoToSignInPage();
+                    return;
                 }
 
                 Debug.Log($"Player id:{AuthenticationService.Instance.PlayerId}");
@@ -122,6 +148,24 @@ namespace Unity.Services.Samples.VirtualShop
             catch (Exception e)
             {
                 Debug.LogException(e);
+            }
+        }
+
+        public async void SaveEarnedCurrency(Currency[] currencies)
+        {
+            foreach (Currency currency in currencies)
+            {
+                try
+                {
+                    await EconomyManager.instance.GrantDebugCurrency(currency.id, currency.amount);
+                    if (this == null) return;
+
+                    await EconomyManager.instance.RefreshCurrencyBalances();
+                }
+                catch (Exception e)
+                {
+                    Debug.LogException(e);
+                }
             }
         }
 

@@ -34,7 +34,7 @@ public class MenuManager : MonoBehaviour
     public GameObject guestUserConfirmationScreen;
     public GameObject terms;
     public GameObject signUpButton_Profile;
-    public GameObject connectivityLoader;
+    public GameObject storeWindow;
 
     public bool signedIn = false;
     public bool isGuest = true;
@@ -110,11 +110,6 @@ public class MenuManager : MonoBehaviour
     public void ShowTerms(bool show)
     {
         terms.SetActive(show);
-    }
-
-    public void ConnectivityLoader(bool show)
-    {
-        connectivityLoader.SetActive(show);
     }
 
     #endregion

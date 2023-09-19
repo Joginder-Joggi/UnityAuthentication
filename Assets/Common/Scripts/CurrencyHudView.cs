@@ -37,6 +37,16 @@ namespace Unity.Services.Samples
                         currencyItemView.SetBalance(balance.Balance);
                     }
                 }
+
+
+
+                foreach (var currency in GameManager.instance.myCurrencies)
+                {
+                    if (string.Equals(balance.CurrencyId, currency.id))
+                    {
+                        currency.SetBalance((int)balance.Balance);
+                    }
+                }
             }
 
             if (currenciesString.Length > 0)

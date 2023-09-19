@@ -21,7 +21,10 @@ Enter the following JSON data for the `VIRTUAL_SHOP_CONFIG_TARALITY` key in Remo
         }, {
             "id": "INDRAS_EMBRACE_FOR_GEMS",
             "color": "#FFFFFFFF",
-            "badgeIconAddress": ""
+            "badgeIconAddress": "Sprites/Badges/Banner",
+            "badgeColor": "#FF0000FF",
+            "badgeText": "Best Value",
+            "badgeTextColor": "#FFFFFFFF"
         }]
     }, {
         "id": "Currencies",

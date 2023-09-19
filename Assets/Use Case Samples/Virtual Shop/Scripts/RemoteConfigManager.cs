@@ -45,7 +45,7 @@ namespace Unity.Services.Samples.VirtualShop
 
         void GetConfigValues()
         {
-            var shopCategoriesConfigJson = RemoteConfigService.Instance.appConfig.GetJson("VIRTUAL_SHOP_CONFIG");
+            var shopCategoriesConfigJson = RemoteConfigService.Instance.appConfig.GetJson("VIRTUAL_SHOP_CONFIG_TARALITY");
             virtualShopConfig = JsonUtility.FromJson<VirtualShopConfig>(shopCategoriesConfigJson);
         }
 

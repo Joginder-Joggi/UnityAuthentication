@@ -9,6 +9,7 @@ using TMPro;
 using System.Threading.Tasks;
 using System.Collections;
 using DG.Tweening;
+using Unity.Services.Samples.VirtualShop;
 
 public class LoginManager : MonoBehaviour
 {
@@ -134,7 +135,7 @@ public class LoginManager : MonoBehaviour
             PlayerPrefs.SetInt(autoSignInKey, 0);
         }
 
-        MenuManager.instance.ConnectivityLoader(true);
+        MainMenuManager.instance.ConnectivityLoader(true);
 
         if (username != "" &&  password != "")
         {
@@ -147,7 +148,7 @@ public class LoginManager : MonoBehaviour
         }
 
 
-        MenuManager.instance.ConnectivityLoader(false);
+        MainMenuManager.instance.ConnectivityLoader(false);
     }
 
     public void SignOut()
@@ -194,11 +195,11 @@ public class LoginManager : MonoBehaviour
 
     public async void SingInAsGuest()
     {
-        MenuManager.instance.ConnectivityLoader(true);
+        MainMenuManager.instance.ConnectivityLoader(true);
 
         await SignInAnonymouslyAsync();
 
-        MenuManager.instance.ConnectivityLoader(false);
+        MainMenuManager.instance.ConnectivityLoader(false);
     }
 
     async Task SignInAnonymouslyAsync()
@@ -248,7 +249,7 @@ public class LoginManager : MonoBehaviour
         // You can use Unity's Authentication service or your custom registration system.
         // For Unity Authentication service, refer to Unity's documentation.
 
-        MenuManager.instance.ConnectivityLoader(true);
+        MainMenuManager.instance.ConnectivityLoader(true);
 
         if (password != "" && password == confirmPassword)
         {
@@ -274,7 +275,7 @@ public class LoginManager : MonoBehaviour
         }
 
 
-        MenuManager.instance.ConnectivityLoader(false);
+        MainMenuManager.instance.ConnectivityLoader(false);
     }
 
     async Task SignUpWithUsernamePasswordAsync(string username, string password)
@@ -344,6 +345,7 @@ public class LoginManager : MonoBehaviour
     {
         Debug.Log("Player has signed in.");
         MenuManager.instance.signedIn = true;
+        VirtualShopSceneManager.Instance.InitializeStoreAsync();
     }
 
     // Callback when a sign-out attempt has completed successfully

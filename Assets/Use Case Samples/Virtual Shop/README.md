@@ -77,14 +77,19 @@ To replicate this sample scene's setup on your own dashboard, you need to:
 
 [Configure the following resource](https://docs.unity.com/economy/) in the **LiveOps** dashboard:
 
-| **Resource type**  | **Resource item**  | **ID**   | **Custom data**                                 | **Description**                                            |
-|:-------------------|:-------------------|:---------|:------------------------------------------------|:-----------------------------------------------------------|
-| Currency           | Coin               | `COIN`   | `{"spriteAddress": "Sprites/Currency/Coin"}`    | A currency you can spend and purchase in the virtual shop. |
-| Currency           | Gem                | `GEM`    | `{"spriteAddress": "Sprites/Currency/Gem"}`     | A currency you can spend in the virtual shop.              |
-| Currency           | Pearl              | `PEARL`  | `{"spriteAddress": "Sprites/Currency/Pearl"}`   | A currency you can purchase in the virtual shop.           |
-| Currency           | Star               | `STAR`   | `{"spriteAddress": "Sprites/Currency/Star"}`    | A currency you can purchase in the virtual shop.           |
-| Inventory Item     | Sword              | `SWORD`  | `{"spriteAddress": "Sprites/Inventory/Sword"}`  | An item you can purchase in the virtual shop.              |
-| Inventory Item     | Shield             | `SHIELD` | `{"spriteAddress": "Sprites/Inventory/Shield"}` | An item you can purchase in the virtual shop.              |
+| **Resource type**  | **Resource item**  | **ID**                 | **Custom data**                                              | **Description**                                            |
+|:-------------------|:-------------------|:-----------------------|:-------------------------------------------------------------|:-----------------------------------------------------------|
+| Currency           | Pearl              | `PEARL`                | `{"spriteAddress": "Sprites/Currency/Pearl"}`                | A currency you can purchase in the virtual shop.           |
+| Currency           | Star               | `STAR`                 | `{"spriteAddress": "Sprites/Currency/Star"}`                 | A currency you can purchase in the virtual shop.           |
+| Inventory Item     | Sword              | `SWORD`                | `{"spriteAddress": "Sprites/Inventory/Sword"}`               | An item you can purchase in the virtual shop.              |
+| Inventory Item     | Shield             | `SHIELD`               | `{"spriteAddress": "Sprites/Inventory/Shield"}`              | An item you can purchase in the virtual shop.              |
+| **Tarality**       |
+| Currency           | Coin               | `COIN`                 | `{"spriteAddress": "Sprites/Currency/Coin"}`                 | A currency you can spend and purchase in the virtual shop. |
+| Currency           | Gem                | `GEM`                  | `{"spriteAddress": "Sprites/Currency/Gem"}`                  | A currency you can spend in the virtual shop.              |
+| Inventory Item     | Gandiva Guard      | `GANDIVA_GUARD`        | `{"spriteAddress": "Sprites/Inventory/GandivaGuard"}`        | An item you can purchase in the virtual shop.              |
+| Inventory Item     | Archers Aegis      | `ARCHERS_AEGIS`        | `{"spriteAddress": "Sprites/Inventory/ArchersAegis"}`        | An item you can purchase in the virtual shop.              |
+| Inventory Item     | Dhananjaya Defender| `DHANANJAYA_DEFENDER`  | `{"spriteAddress": "Sprites/Inventory/DhananjayaDefender"}`  | An item you can purchase in the virtual shop.              |
+| Inventory Item     | Indras Embrace     | `INDRAS_EMBRACE`       | `{"spriteAddress": "Sprites/Inventory/IndrasEmbrace"}`       | An item you can purchase in the virtual shop.              |
 
 \* This sample uses Addressable Assets to implement the sprite icons for all Economy resources. As the developer, you can add the Addressables address of the icon for each currency directly in the Economy dashboard, and then retrieve it at runtime without needing to change your code. This is helpful if for example, you want to update currency icons by changing the address in your dashboard instead of updating your app. To do this for each resource:
 
@@ -96,26 +101,36 @@ When the client needs to initialize sprites (for example, to display the costs a
 
 In addition, [configure the following virtual purchases](https://docs.unity.com/economy/item-types.html#Virtual_purchase) for the virtual shop:
 
-| **Item name**      | **ID**                            | **This purchase buys**  | **This purchase costs** |
-| :----------------- | :-------------------------------- | :---------------------- | :---------------------- |
-| 1 Sword for Coins  | `VIRTUAL_SHOP_1_SWORD_FOR_COINS`  | Sword (1)               | Coins (15)              |
-| 2 Sword for Coins  | `VIRTUAL_SHOP_2_SWORD_FOR_COINS`  | Sword (2)               | Coins (25)              |
-| 3 Sword for Coins  | `VIRTUAL_SHOP_3_SWORD_FOR_COINS`  | Sword (3)               | Coins (30)              |
-| 1 Shield for Coins | `VIRTUAL_SHOP_1_SHIELD_FOR_COINS` | Shield (1)              | Coins (10)              |
-| 2 Shield for Coins | `VIRTUAL_SHOP_2_SHIELD_FOR_COINS` | Shield (2)              | Coins (15)              |
-| 3 Shield for Coins | `VIRTUAL_SHOP_3_SHIELD_FOR_COINS` | Shield (3)              | Coins (20)              |
-| 100 Coin for Gems  | `VIRTUAL_SHOP_100_COIN_FOR_GEMS`  | Coin (100)              | Gem (7)                 |
-| 250 Coin for Gems  | `VIRTUAL_SHOP_250_COIN_FOR_GEMS`  | Coin (250)              | Gem (15)                |
-| 1000 Coin for Gems | `VIRTUAL_SHOP_1000_COIN_FOR_GEMS` | Coin (1000)             | Gem (25)                |
-| 1 Star for Coins   | `VIRTUAL_SHOP_1_STAR_FOR_COINS`   | Star (1)                | Coin (25)               |
-| 3 Pearl for Coins  | `VIRTUAL_SHOP_3_PEARL_FOR_COINS`  | Pearl (3)               | Coin (50)               |
+| **Item name**                  | **ID**                            | **This purchase buys**  | **This purchase costs** |
+| :----------------------------- | :-------------------------------- | :---------------------- | :---------------------- |
+| 1 Sword for Coins              | `VIRTUAL_SHOP_1_SWORD_FOR_COINS`  | Sword (1)               | Coins (15)              |
+| 2 Sword for Coins              | `VIRTUAL_SHOP_2_SWORD_FOR_COINS`  | Sword (2)               | Coins (25)              |
+| 3 Sword for Coins              | `VIRTUAL_SHOP_3_SWORD_FOR_COINS`  | Sword (3)               | Coins (30)              |
+| 1 Shield for Coins             | `VIRTUAL_SHOP_1_SHIELD_FOR_COINS` | Shield (1)              | Coins (10)              |
+| 2 Shield for Coins             | `VIRTUAL_SHOP_2_SHIELD_FOR_COINS` | Shield (2)              | Coins (15)              |
+| 3 Shield for Coins             | `VIRTUAL_SHOP_3_SHIELD_FOR_COINS` | Shield (3)              | Coins (20)              |
+| 100 Coin for Gems              | `VIRTUAL_SHOP_100_COIN_FOR_GEMS`  | Coin (100)              | Gem (7)                 |
+| 250 Coin for Gems              | `VIRTUAL_SHOP_250_COIN_FOR_GEMS`  | Coin (250)              | Gem (15)                |
+| 1000 Coin for Gems             | `VIRTUAL_SHOP_1000_COIN_FOR_GEMS` | Coin (1000)             | Gem (25)                |
+| 1 Star for Coins               | `VIRTUAL_SHOP_1_STAR_FOR_COINS`   | Star (1)                | Coin (25)               |
+| 3 Pearl for Coins              | `VIRTUAL_SHOP_3_PEARL_FOR_COINS`  | Pearl (3)               | Coin (50)               |
+| **Tarality**                   |
+| 100 Coin for Gems              | `100_COINS_FOR_GEMS`              | Sword (1)               | Coins (15)              |
+| 1000 Coin for Gems             | `1000_COINS_FOR_GEMS`             | Sword (1)               | Coins (15)              |
+| 10000 Coin for Gems            | `10000_COINS_FOR_GEMS`            | Sword (1)               | Coins (15)              |
+| Gandiva Guard For Coins        | `GANDIVA_GUARD_FOR_COINS`         | Sword (1)               | Coins (15)              |
+| Archers Aegis For Coins        | `ARCHERS_AEGIS_FOR_COINS`         | Sword (1)               | Coins (15)              |
+| Dhananjaya Defender For Coins  | `DHANANJAYA_DEFENDER_FOR_COINS`   | Sword (1)               | Coins (15)              |
+| Indras Embrace For Gems        | `INDRAS_EMBRACE_FOR_GEMS`         | Sword (1)               | Coins (15)              |
 
 #### Remote Config
 [Set up the following config values](https://docs.unity.com/remote-config/HowDoesRemoteConfigWork.html) in the **LiveOps** dashboard:
 
-| **Key**               | **Type** | **Description**                                                                                |
-| :-------------------- | :------- | :--------------------------------------------------------------------------------------------- |
-| `VIRTUAL_SHOP_CONFIG` | JSON     | Contains information about Virtual Purchases and where they should appear in the virtual shop. |
+| **Key**                        | **Type** | **Description**                                                                                |
+| :----------------------------- | :------- | :--------------------------------------------------------------------------------------------- |
+| `VIRTUAL_SHOP_CONFIG`          | JSON     | Contains information about Virtual Purchases and where they should appear in the virtual shop. |
+| **Tarality**                   |
+| `VIRTUAL_SHOP_CONFIG_TARALITY` | JSON     | Contains information about Virtual Purchases and where they should appear in the virtual shop for Tarality Project. |
 
 Enter the following JSON data for the `VIRTUAL_SHOP_CONFIG` key:
 
@@ -176,6 +191,56 @@ Enter the following JSON data for the `VIRTUAL_SHOP_CONFIG` key:
             "id": "VIRTUAL_SHOP_3_PEARL_FOR_COINS",
             "color": "#FFFFFFFF",
             "badgeIconAddress": ""
+        }]
+    }, {
+        "id": "IAP",
+        "enabledFlag": false,
+        "items": []
+    }]
+}
+```
+| **Tarality**   |
+
+```json
+{
+    "categories": [{
+        "id": "Items",
+        "enabledFlag": true,
+        "items": [{
+            "id": "GANDIVA_GUARD_FOR_COINS",
+            "color": "#FFFFFFFF",
+            "badgeIconAddress": ""
+        }, {
+            "id": "ARCHERS_AEGIS_FOR_COINS",
+            "color": "#FFFFFFFF",
+            "badgeIconAddress": ""
+        }, {
+            "id": "DHANANJAYA_DEFENDER_FOR_COINS",
+            "color": "#FFFFFFFF",
+            "badgeIconAddress": ""
+        }, {
+            "id": "INDRAS_EMBRACE_FOR_GEMS",
+            "color": "#FFFFFFFF",
+            "badgeIconAddress": ""
+        }]
+    }, {
+        "id": "Currencies",
+        "enabledFlag": true,
+        "items": [{
+            "id": "100_COINS_FOR_GEMS",
+            "color": "#FFFFFFFF",
+            "badgeIconAddress": ""
+        }, {
+            "id": "1000_COINS_FOR_GEMS",
+            "color": "#FFFFFFFF",
+            "badgeIconAddress": ""
+        }, {
+            "id": "10000_COINS_FOR_GEMS",
+            "color": "#FFFFFFFF",
+            "badgeIconAddress": "Sprites/Badges/Banner",
+            "badgeColor": "#FF0000FF",
+            "badgeText": "Best Value",
+            "badgeTextColor": "#FFFFFFFF"
         }]
     }, {
         "id": "IAP",
