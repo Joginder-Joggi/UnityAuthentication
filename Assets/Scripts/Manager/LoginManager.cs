@@ -283,6 +283,7 @@ public class LoginManager : MonoBehaviour
         try
         {
             await AuthenticationService.Instance.SignUpWithUsernamePasswordAsync(username, password);
+            await AuthenticationService.Instance.UpdatePlayerNameAsync(username);
             StartCoroutine(ShowMessage(messageText, "Sign Up Successfull", Color.green));
             Debug.Log("SignUp is successful.");
             MenuManager.instance.ShowProfileWindow();

@@ -1036,7 +1036,7 @@ GameObject:
   - component: {fileID: 958418088819254826}
   - component: {fileID: 5349808696558564921}
   m_Layer: 5
-  m_Name: Title
+  m_Name: Highscore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1089,7 +1089,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Title Here
+  m_text: Highscore
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 756e03cc7e2aef1488cc2078ec226935, type: 2}
   m_sharedMaterial: {fileID: -8143461022956552990, guid: 756e03cc7e2aef1488cc2078ec226935, type: 2}
@@ -7714,7 +7714,7 @@ MonoBehaviour:
   categoryButtonsContainerGroup: {fileID: 3680291992954283981}
   categoryButtonPrefab: {fileID: 4756278787398645985, guid: be2306e290c9711429a70cba56b81630, type: 3}
   rewardPopup: {fileID: 9180412887909880698}
-  messagePopup: {fileID: 514942903731091227}
+  messagePopup: {fileID: 6523006895941644405}
 --- !u!1 &5227447896417007426
 GameObject:
   m_ObjectHideFlags: 0
@@ -8086,7 +8086,7 @@ RectTransform:
   - {fileID: 5867846089994406680}
   - {fileID: 8272627038880582635}
   - {fileID: 6106463385812012722}
-  - {fileID: 2814966252025840683}
+  - {fileID: 8841644714379641669}
   - {fileID: 3550650087655877614}
   m_Father: {fileID: 3815030506743468752}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13732,7 +13732,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3e7e05fd68474c419fca55afbb8abd4, type: 3}
---- !u!114 &514942903731091227 stripped
+--- !u!114 &6523006895941644405 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8441267724980883980, guid: f3e7e05fd68474c419fca55afbb8abd4, type: 3}
   m_PrefabInstance: {fileID: 3432596633373827705}
@@ -13743,7 +13743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31a8359b5335a614c878c27526427dff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &2814966252025840683 stripped
+--- !u!224 &8841644714379641669 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6129642592863641916, guid: f3e7e05fd68474c419fca55afbb8abd4, type: 3}
   m_PrefabInstance: {fileID: 3432596633373827705}

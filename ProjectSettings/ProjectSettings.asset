@@ -935,10 +935,10 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 4f53d61b-a60f-45b4-a55f-4bb33f32b5ac
+  cloudProjectId: c31e8708-774b-4f8b-9350-905b0ded609b
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: TaralityTest
+  projectName: Unity Gaming Services Use Cases (1)
   organizationId: bhalanetra-creators-as-publisher
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
