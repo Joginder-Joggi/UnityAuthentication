@@ -5,6 +5,8 @@ using Unity.Services.Leaderboards.Models;
 using Unity.Services.Leaderboards;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
+using System.Threading.Tasks;
+using System;
 
 public class LeaderBoardContentView : MonoBehaviour
 {
@@ -34,9 +36,11 @@ public class LeaderBoardContentView : MonoBehaviour
 
     #endregion
 
+    string leaderboardId = "my_leaderboard";
+
     public async void RefreshLeaderboards()
     {
-        var scoresResponse = await LeaderboardsService.Instance.GetScoresAsync("my_first_leaderboard");
+        var scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(leaderboardId);
 
         // Clear existing entries (if any)
         foreach (Transform child in contentContainer)
@@ -56,6 +60,29 @@ public class LeaderBoardContentView : MonoBehaviour
         }
 
         Debug.Log(JsonConvert.SerializeObject(scoresResponse));
+    }
+
+    public async void RefreshScore()
+    {
+        await GetPlayersScore();
+    }
+
+    public async Task<int> GetPlayersScore()
+    {
+        try
+        {
+            var scoreResponse = await LeaderboardsService.Instance.GetPlayerScoreAsync(leaderboardId);
+
+            return (int)scoreResponse.Score;
+        }
+        catch (Exception ex)
+        {
+            // Handle the exception here, such as logging it or displaying an error message.
+            // You can also choose to return a default value or handle the error differently.
+            Debug.LogError("An error occurred while fetching player score: " + ex.Message);
+            LeaderboardsManager.instance.AddScore(0);
+            return 0;// Return a default value or an error code as needed.
+        }
     }
 }
 

@@ -8,6 +8,7 @@ using Unity.Services.CloudSave;
 //using UnityEditor.Animations;
 using UnityEngine;
 using Unity.Services.Samples.VirtualShop;
+using System.Threading.Tasks;
 
 public class GameManager : MonoBehaviour
 {
@@ -40,7 +41,8 @@ public class GameManager : MonoBehaviour
     public RuntimeAnimatorController playerController;
     public ControlMode controlMode;
 
-    public int coins;
+    public int score;
+    public int highscore;
 
     [Header("Currencies")]
     public Currency[] myCurrencies;
@@ -86,27 +88,40 @@ public class GameManager : MonoBehaviour
         Debug.Log("Not Enough Coins.. Earn or Buy some");
     }
 
-    public void AddCoins(Currency[] collectedCurrencies)
+    public async Task SetHighscoreAsync()
     {
-        foreach (var collectedCurrency in collectedCurrencies)
-        {
-            foreach (var myCurrency in myCurrencies)
-            {
-                if(string.Equals(collectedCurrency.id, myCurrency.id))
-                {
-                    myCurrency.amount += collectedCurrency.amount;
-                }
-            }
-        }
-
-
-        VirtualShopSceneManager.Instance.SaveEarnedCurrency(myCurrencies);
-        //PlayerPrefs.SetInt(coinKey, coins);
+        int highscore = await LeaderBoardContentView.instance.GetPlayersScore();
+        this.highscore = highscore;
     }
 
-    public void DeductCoins(int amount)
+    public void UpdateScores(Currency[] currencies, int score)
     {
-        coins -= amount;
+        AddCoins(currencies);
+
+        if(score > highscore)
+        {
+            highscore = score;
+            LeaderboardsManager.instance.AddScore(score);
+        }
+    }
+
+    public void AddCoins(Currency[] collectedCurrencies)
+    {
+        //foreach (var collectedCurrency in collectedCurrencies)
+        //{
+        //    foreach (var myCurrency in myCurrencies)
+        //    {
+        //        if(string.Equals(collectedCurrency.id, myCurrency.id))
+        //        {
+        //            Debug.Log(myCurrency.amount);
+        //            Debug.Log(collectedCurrency.amount);
+        //            myCurrency.amount += collectedCurrency.amount;
+        //        }
+        //    }
+        //}
+
+
+        VirtualShopSceneManager.Instance.SaveEarnedCurrency(collectedCurrencies);
         //PlayerPrefs.SetInt(coinKey, coins);
     }
 }
@@ -123,14 +138,14 @@ public class Currency
     }
 }
 
-public enum CurrencyType
-{
-    COIN,
-    GEM
-}
-
 public enum ControlMode
 {
     TOUCH,
     KEYBOARD
+}
+
+public enum CurrencyType
+{
+    COIN,
+    GEM
 }

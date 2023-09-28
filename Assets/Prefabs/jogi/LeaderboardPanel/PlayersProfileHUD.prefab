@@ -183,8 +183,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4898696785889287353}
-  - {fileID: 5571781074821702520}
   - {fileID: 5955623152708061972}
+  - {fileID: 5571781074821702520}
   m_Father: {fileID: 3673463974328225511}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
@@ -411,6 +411,10 @@ MonoBehaviour:
   playerNameText: {fileID: 4619201609297897417}
   rankText: {fileID: 8107394712703429276}
   scoreText: {fileID: 7825219020123713218}
+  crown: {fileID: 7991857296119267875}
+  goldCrown: {fileID: 21300000, guid: ea562c11919a7cc4b955129b49141e45, type: 3}
+  silverCrown: {fileID: 21300000, guid: be0c51793458957478c040c7ae580bfd, type: 3}
+  bronzeCrown: {fileID: 21300000, guid: 5abae66c32cef6d4a850f021591954f9, type: 3}
 --- !u!1 &6337167922237656404
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,7 +450,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 18.2, y: 0}
+  m_AnchoredPosition: {x: 78.2, y: 0}
   m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &868757951638099309

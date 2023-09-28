@@ -153,7 +153,8 @@ PlayerSettings:
   resetResolutionOnWindowResize: 0
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
-  applicationIdentifier: {}
+  applicationIdentifier:
+    Standalone: com.DefaultCompany.CloudSave
   buildNumber:
     Standalone: 0
     VisionOS: 0
@@ -935,10 +936,10 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: c31e8708-774b-4f8b-9350-905b0ded609b
+  cloudProjectId: 4f53d61b-a60f-45b4-a55f-4bb33f32b5ac
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Unity Gaming Services Use Cases (1)
+  projectName: TaralityTest
   organizationId: bhalanetra-creators-as-publisher
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0

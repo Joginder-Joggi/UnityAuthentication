@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
@@ -14,6 +15,7 @@ public class MainMenuManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -23,8 +25,13 @@ public class MainMenuManager : MonoBehaviour
 
     #endregion
 
+    #region Variables
+
     public Transform playerDisplayPos;
     public Transform customizationDisplayPoint;
+
+    [Header("Next Scene")]
+    public int sceneindex;
 
     [Header("UI Items")]
     public Button selectButton;
@@ -57,14 +64,23 @@ public class MainMenuManager : MonoBehaviour
     public GameObject gameLoadingWindow;
     public GameObject connectionLoader;
 
+    [Header("Leaderboard Window")]
+    public GameObject leaderboardWindow;
+
+    [Header("Other")]
+    public GameObject currencyHUD;
+
+    #endregion
+
     // Start is called before the first frame update
     void Start()
     {
         characterDB = GameManager.instance.characterDatabase;
 
-        UseSkin(GameManager.instance.DisplaySkin());
+        //UseSkin(GameManager.instance.DisplaySkin());
 
-        coinText.text = GameManager.instance.coins.ToString();
+        if(coinText != null)
+            coinText.text = GameManager.instance.score.ToString();
 
         storesWindow = MenuManager.instance.storeWindow;
 
@@ -79,16 +95,13 @@ public class MainMenuManager : MonoBehaviour
         //Instantiate(GameManager.instance.DisplaySkin(), playerDisplayPos);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void ConnectivityLoader(bool show)
     {
         connectionLoader.SetActive(show);
     }
+
+
+    #region Customization
 
     public void OpenCustomizationWindow()
     {
@@ -175,32 +188,66 @@ public class MainMenuManager : MonoBehaviour
         GameObject ShowingSkin = Instantiate(slectedSkin, customizationDisplayPoint);
     }
 
+    #endregion
+
+
+    #region MenuFunctions
+
+    public void EnterMetaverse()
+    {
+        currencyHUD.SetActive(false);
+        LoadLevel(sceneindex);
+    }
+
+    public virtual void LoadLevel(string levelName)
+    {
+        SceneManager.LoadSceneAsync(levelName);
+    }
+
+    public void LoadLevel(int levelIndex)
+    {
+        SceneManager.LoadSceneAsync(levelIndex);
+    }
+
     public void OpenStoreWindow()
     {
         storesWindow.SetActive(true);
-        mainMenuWindow.SetActive(false);
     }
 
     public void CloseStoreWindow()
     {
-        mainMenuWindow.SetActive(true);
         storesWindow.SetActive(false);
     }
 
     public void OpenSettingsMenu()
     {
+        currencyHUD.SetActive(false);
         settingsWindow.SetActive(true);
         mainMenuWindow.SetActive(false);
     }
 
     public void CloseSettingsMenu()
     {
+        currencyHUD.SetActive(true);
         mainMenuWindow.SetActive(true);
         settingsWindow.SetActive(false);
+    }
+
+    public void OpenLeaderboard()
+    {
+        LeaderBoardContentView.instance.RefreshLeaderboards();
+        leaderboardWindow.SetActive(true);
+    }
+
+    public void CloseLeaderboard()
+    {
+        leaderboardWindow.SetActive(false);
     }
 
     public void Quit()
     {
         Application.Quit();
     }
+
+    #endregion
 }

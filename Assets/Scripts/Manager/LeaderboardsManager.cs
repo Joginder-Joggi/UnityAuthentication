@@ -6,7 +6,6 @@ using Unity.Services.Authentication;
 using Newtonsoft.Json;
 using UnityEngine.SocialPlatforms.Impl;
 using System;
-using TMPro;
 
 public class LeaderboardsManager : MonoBehaviour
 {
@@ -28,15 +27,13 @@ public class LeaderboardsManager : MonoBehaviour
 
     #endregion
 
-    public TextMeshProUGUI text;
-
-    public static string leaderboardId = new string("my_first_leaderboard");
+    public static string leaderboardId = "my_leaderboard";
 
     public string versionId;
 
     public int score;
 
-    public async void AddScore()
+    public async void AddScore(int score)
     {
         var playerEntry = await LeaderboardsService.Instance.AddPlayerScoreAsync(leaderboardId, score);
 
@@ -54,12 +51,6 @@ public class LeaderboardsManager : MonoBehaviour
     {
         var scoresResponse = await LeaderboardsService.Instance
             .GetScoresAsync(leaderboardId);
-
-        for (int i = 0; i < scoresResponse.Results.Count; i++)
-        {
-            Debug.Log("The score of Player " + scoresResponse.Results[i].PlayerName + " is " + scoresResponse.Results[i].Score);
-        }
-
         Debug.Log(JsonConvert.SerializeObject(scoresResponse));
     }
 

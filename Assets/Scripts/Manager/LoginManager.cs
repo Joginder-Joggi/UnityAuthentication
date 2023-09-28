@@ -283,7 +283,6 @@ public class LoginManager : MonoBehaviour
         try
         {
             await AuthenticationService.Instance.SignUpWithUsernamePasswordAsync(username, password);
-            await AuthenticationService.Instance.UpdatePlayerNameAsync(username);
             StartCoroutine(ShowMessage(messageText, "Sign Up Successfull", Color.green));
             Debug.Log("SignUp is successful.");
             MenuManager.instance.ShowProfileWindow();
@@ -336,16 +335,17 @@ public class LoginManager : MonoBehaviour
     private void OnSessionExpired()
     {
         Debug.Log("Session has expired.");
-        MenuManager.instance.signedIn = true;
+        MenuManager.instance.signedIn = false;
         MenuManager.instance.PopSessionTimeOutWindow();
         if (MenuManager.instance.isGuest) MenuManager.instance.isGuest = false;
     }
 
     // Callback when a sign-in attempt has completed successfully
-    private void OnSignedIn()
+    private async void OnSignedIn()
     {
         Debug.Log("Player has signed in.");
         MenuManager.instance.signedIn = true;
+        await GameManager.instance.SetHighscoreAsync();
         VirtualShopSceneManager.Instance.InitializeStoreAsync();
     }
 
@@ -353,7 +353,7 @@ public class LoginManager : MonoBehaviour
     private void OnSignedOut()
     {
         Debug.Log("Player has signed out.");
-        MenuManager.instance.signedIn = true;
+        MenuManager.instance.signedIn = false;
         if (MenuManager.instance.isGuest) MenuManager.instance.isGuest = false;
     }
 
